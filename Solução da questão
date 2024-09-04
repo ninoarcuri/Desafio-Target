@@ -1,0 +1,95 @@
+# Questão 1 de 5
+
+i = 13
+soma = 0 
+k = 0
+while k < i:
+  k = k + 1
+  soma = soma + k
+print(soma);
+
+# Questão 2 de 5
+
+def fibonacci(entrada):
+	fib1 = 0
+	fib2 = 1
+	while fib2 < entrada:
+			fib1, fib2 = fib2, fib1 + fib2
+	return fib2 == entrada
+
+number = input("Digite um número: ")
+try:
+	entrada = int(number)
+	if fibonacci(entrada):
+			print(f"O número {entrada} faz parte da sequência de Fibonacci")
+	else:
+			print(f"O número {entrada} não faz parte da sequência de Fibonacci")
+except ValueError:
+	print("Por favor, digite um número válido")
+
+# Questão 3 de 5
+
+total_faturamento = 0
+dias_com_faturamento = 0
+import json
+media = 0
+with open('faturamento.json') as json_file:
+	dados = json.load(json_file)
+
+for i in dados:
+    if float(i['valor']) > 0:
+        total_faturamento += float(i['valor'])
+        dias_com_faturamento += 1
+media_mensal = total_faturamento / dias_com_faturamento
+
+# Calcula o menor valor de faturamento
+menor_valor = float(dados[0]['valor'])
+for i in dados:
+    if float(i['valor']) > 0 and float(i['valor']) < menor_valor:
+        menor_valor = float(i['valor'])
+
+# Calcula o maior valor de faturamento
+maior_valor = float(dados[0]['valor'])
+for i in dados:
+    if float(i['valor']) > maior_valor:
+        maior_valor = float(i['valor'])
+
+# Calcula o número de dias com faturamento acima da média
+dias_acima_media = 0
+for i in dados:
+    if float(i['valor']) > media_mensal:
+        dias_acima_media += 1
+
+print("O menor valor de faturamento: R$" + str(menor_valor))
+print("O maior valor de faturamento: R$" + str(maior_valor))
+print("Número de dias com faturamento acima da média: " + str(dias_acima_media))
+
+# Questao 4 de 5
+
+faturamento_total = 67836.43 + 36678.66 + 29229.88 + 27165.48 + 19849.53
+
+sp = (67836.43 / faturamento_total) * 100
+rj = (36678.66 / faturamento_total) * 100
+mg = (29229.88 / faturamento_total) * 100
+es = (27165.48 / faturamento_total) * 100
+outros = (19849.53 / faturamento_total) * 100
+
+print(f'Percentual de representação de SP: {sp:.2f}%')
+print(f'Percentual de representação de RJ: {rj:.2f}%')
+print(f'Percentual de representação de MG: {mg:.2f}%')
+print(f'Percentual de representação de ES: {es:.2f}%')
+print(f'Percentual de representação de Outros: {outros:.2f}%')
+
+# Questão 5 de 5
+
+def reverse_string(s):
+  reversed_string = ''
+  for i in range(len(s) - 1, -1, -1):
+    reversed_string += s[i]
+  return reversed_string
+
+# Exemplo de uso:
+string = input("Digite uma string: ")
+reversed_string = reverse_string(string)
+print(f"String original: {string}")
+print(f"String invertida: {reversed_string}")
